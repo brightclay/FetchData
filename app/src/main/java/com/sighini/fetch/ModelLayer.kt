@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.google.gson.Gson
-import com.sighini.fetch.remote.VolleySingleton
+import com.sighini.fetch.util.VolleySingleton
 import org.json.JSONArray
 
 class ModelLayer(context: Context) {

@@ -1,4 +1,4 @@
-package com.sighini.fetch.remote
+package com.sighini.fetch.util
 
 import android.content.Context
 import com.android.volley.RequestQueue
