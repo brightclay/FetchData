@@ -1,31 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.sighini.fetch.MainViewModel" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <ProgressBar
-        android:id="@+id/pBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </ProgressBar>
+        </com.google.android.material.appbar.AppBarLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <ProgressBar
+            android:id="@+id/progessBar"
+            style="?android:attr/progressBarStyle"
+            android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE}"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:visibility="visible">
+        </ProgressBar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listView"
+            android:visibility="@{viewModel.loading ? View.GONE : View.VISIBLE}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:visibility="visible"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>
